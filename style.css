@@ -1,0 +1,219 @@
+/* ==========================================================================
+   BIRTHDAY GIFT SELECTOR — CORPORATE AESTHETIC STYLESHEET
+   Blending warm, pastel luxury birthday celebration with corporate bureaucracy
+   ========================================================================== */
+
+/* Background Subtle Dot Pattern */
+body {
+  background-color: #FAF7F2;
+  background-image: radial-gradient(#E8E2D6 1px, transparent 1px);
+  background-size: 24px 24px;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism & Soft Shadow utilities */
+.glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 10px 25px -5px rgba(148, 120, 90, 0.07), 0 8px 10px -6px rgba(148, 120, 90, 0.04);
+}
+
+.glass-card-hover {
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 30px -10px rgba(160, 110, 60, 0.12), 0 10px 15px -5px rgba(160, 110, 60, 0.06);
+  border-color: rgba(217, 119, 6, 0.3);
+}
+
+/* Mystery Card Suspicious Styling */
+.mystery-card {
+  background: linear-gradient(135deg, #FFFDF8 0%, #FFF8EE 50%, #FFF2F4 100%);
+  border: 2px dashed #F59E0B;
+  position: relative;
+  overflow: hidden;
+}
+
+.mystery-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, transparent 60%);
+  animation: rotate-aura 12s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotate-aura {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.mystery-card:hover {
+  border-color: #EF4444;
+  box-shadow: 0 20px 35px -8px rgba(239, 68, 68, 0.18);
+  transform: translateY(-6px) scale(1.015);
+}
+
+/* Rubber Stamp Styling */
+.stamp-approved {
+  display: inline-block;
+  padding: 0.35rem 1.25rem;
+  text-transform: uppercase;
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  color: #15803D;
+  border: 3.5px dashed #15803D;
+  border-radius: 8px;
+  transform: rotate(-7deg);
+  box-shadow: 0 0 0 2px rgba(21, 128, 61, 0.2);
+  animation: stamp-drop 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  opacity: 0.95;
+  background-color: rgba(240, 253, 244, 0.85);
+  user-select: none;
+}
+
+@keyframes stamp-drop {
+  0% {
+    opacity: 0;
+    transform: scale(2.8) rotate(-22deg);
+  }
+  100% {
+    opacity: 0.95;
+    transform: scale(1) rotate(-7deg);
+  }
+}
+
+/* Official Watermark background */
+.official-watermark {
+  position: relative;
+}
+
+.official-watermark::after {
+  content: "OFFICIAL DISPATCH • BDAY-APPROVED";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: rgba(148, 163, 184, 0.08);
+  white-space: nowrap;
+  pointer-events: none;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 0.15em;
+  z-index: 0;
+}
+
+/* Subtle Shimmer for progress bars and badges */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.4) 40%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.4) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 1.8s infinite;
+}
+
+/* Screen Transitions */
+.fade-in-up {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF7F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Button micro-interaction */
+.btn-satisfying {
+  transition: all 0.15s ease-in-out;
+}
+.btn-satisfying:hover {
+  transform: translateY(-2px);
+}
+.btn-satisfying:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Barcode simulation styling */
+.barcode-strip {
+  display: flex;
+  align-items: stretch;
+  height: 38px;
+  gap: 2.5px;
+  opacity: 0.8;
+  padding: 4px 6px;
+  background: white;
+  border: 1px solid #E2E8F0;
+  border-radius: 4px;
+}
+
+.barcode-bar {
+  background-color: #1E293B;
+  border-radius: 1px;
+}
+
+/* Print Styles for Certificate Download */
+@media print {
+  body {
+    background: white !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .glass-card {
+    box-shadow: none !important;
+    border: 2px solid #CBD5E1 !important;
+  }
+}

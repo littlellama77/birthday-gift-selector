@@ -1,0 +1,1266 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Gift Processing Portal™ — Official Selection</title>
+  
+  <!-- Modern Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Outfit"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            cream: {
+              50: '#FDFBF7',
+              100: '#FAF6F0',
+              200: '#F4ECE1',
+              300: '#EAE0D0',
+            },
+            pastel: {
+              peach: '#FFE7DE',
+              lavender: '#EFEAFF',
+              mint: '#E2F7EF',
+              yellow: '#FFF7D6',
+              rose: '#FCE7EB',
+              blue: '#E3F2FD',
+            },
+            corporate: {
+              navy: '#1E293B',
+              slate: '#334155',
+              border: '#E2E8F0',
+              badge: '#0F172A',
+              stamp: '#16A34A',
+              warn: '#D97706',
+              danger: '#DC2626',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- React 18 & ReactDOM -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  
+  <!-- Babel for JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-cream-100 text-slate-800 font-sans antialiased min-h-screen selection:bg-amber-200">
+  <div id="root">
+    <!-- Fallback / Pre-mount Loader -->
+    <div class="min-h-screen flex flex-col items-center justify-center p-6 text-center">
+      <div class="w-12 h-12 rounded-full border-4 border-amber-300 border-t-amber-600 animate-spin mb-4"></div>
+      <p class="font-heading font-semibold text-slate-700 tracking-wide text-lg">
+        Booting Birthday Gift Processing Department™...
+      </p>
+      <p class="text-xs text-slate-400 font-mono mt-1">Initializing Bureaucratic Protocol v4.20.26</p>
+    </div>
+  </div>
+
+  <!-- Main React Application -->
+    <!-- Main React Application (Inlined for zero-config file:// and http:// execution) -->
+  <script type="text/babel">
+/* ==========================================================================
+   BIRTHDAY GIFT SELECTOR — REACT APPLICATION
+   Corporate Bureaucracy × Birthday Humor
+   ========================================================================== */
+
+const { useState, useEffect, useRef } = React;
+
+// --- Web Audio API Synthesizer (Zero-Asset Sound Effects) ---
+class SoundController {
+  constructor() {
+    this.ctx = null;
+    this.muted = false;
+  }
+
+  init() {
+    if (!this.ctx && (window.AudioContext || window.webkitAudioContext)) {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      this.ctx = new AudioCtx();
+    }
+    if (this.ctx && this.ctx.state === 'suspended') {
+      this.ctx.resume();
+    }
+  }
+
+  playPop() {
+    if (this.muted) return;
+    this.init();
+    if (!this.ctx) return;
+    try {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(420, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(840, this.ctx.currentTime + 0.08);
+      gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.09);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.1);
+    } catch (e) {
+      // Audio fallback silent
+    }
+  }
+
+  playClick() {
+    if (this.muted) return;
+    this.init();
+    if (!this.ctx) return;
+    try {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(280, this.ctx.currentTime);
+      gain.gain.setValueAtTime(0.08, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.05);
+    } catch (e) {}
+  }
+
+  playWarning() {
+    if (this.muted) return;
+    this.init();
+    if (!this.ctx) return;
+    try {
+      const now = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(220, now);
+      osc.frequency.setValueAtTime(180, now + 0.1);
+      gain.gain.setValueAtTime(0.07, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.25);
+    } catch (e) {}
+  }
+
+  playStamp() {
+    if (this.muted) return;
+    this.init();
+    if (!this.ctx) return;
+    try {
+      const now = this.ctx.currentTime;
+      // Thump
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(140, now);
+      osc.frequency.exponentialRampToValueAtTime(40, now + 0.18);
+      gain.gain.setValueAtTime(0.35, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.22);
+    } catch (e) {}
+  }
+
+  playFanfare() {
+    if (this.muted) return;
+    this.init();
+    if (!this.ctx) return;
+    try {
+      const notes = [261.63, 329.63, 392.00, 523.25]; // C, E, G, High C
+      notes.forEach((freq, idx) => {
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        const startTime = this.ctx.currentTime + idx * 0.09;
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, startTime);
+        gain.gain.setValueAtTime(0.12, startTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.35);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(startTime);
+        osc.stop(startTime + 0.4);
+      });
+    } catch (e) {}
+  }
+}
+
+const sounds = new SoundController();
+
+// --- Gift Catalog Data ---
+const GIFTS = [
+  {
+    id: 'beer',
+    title: 'THE DRUK PACKAGE',
+    item: '2 × Druk Beer Cans',
+    desc: 'For hydration purposes, obviously.',
+    icon: '🍺',
+    badge: 'HIGH LIQUIDITY',
+    badgeColor: 'bg-amber-100 text-amber-800 border-amber-300',
+    buttonText: 'CLAIM THIS',
+    isMystery: false,
+    auditCode: 'REQ-DRUK-BEER-02',
+  },
+  {
+    id: 'protein',
+    title: 'THE GAINS PACKAGE',
+    item: '500g Plant Protein',
+    desc: 'Because apparently muscles are important.',
+    icon: '💪',
+    badge: 'NUTRITIONAL AUDIT',
+    badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300',
+    buttonText: 'CLAIM THIS',
+    isMystery: false,
+    auditCode: 'REQ-PLANT-PRO-500',
+  },
+  {
+    id: 'massage',
+    title: 'THE PREMIUM PACKAGE',
+    item: '1 × Shoulder Massage',
+    desc: 'Handcrafted. Limited edition. Appointment subject to availability.',
+    icon: '💆',
+    badge: 'LUXURY ASSET',
+    badgeColor: 'bg-indigo-100 text-indigo-800 border-indigo-300',
+    buttonText: 'CLAIM THIS',
+    isMystery: false,
+    auditCode: 'REQ-SHLDR-MASSAGE-01',
+  },
+  {
+    id: 'plushie',
+    title: 'THE SOFT PACKAGE',
+    item: 'One Plushie',
+    desc: 'No explanation necessary. You deserve a little guy.',
+    icon: '🧸',
+    badge: 'EMOTIONAL SUPPORT',
+    badgeColor: 'bg-pink-100 text-pink-800 border-pink-300',
+    buttonText: 'CLAIM THIS',
+    isMystery: false,
+    auditCode: 'REQ-PLUSHIE-GUY-01',
+  },
+  {
+    id: 'mystery',
+    title: 'THE MYSTERY GIFT',
+    item: 'Something...',
+    desc: 'You have chosen the path of uncertainty.',
+    icon: '❓',
+    badge: 'UNAUTHORIZED VARIANCE',
+    badgeColor: 'bg-rose-100 text-rose-800 border-rose-300 animate-pulse',
+    buttonText: 'RISK IT',
+    isMystery: true,
+    auditCode: 'REQ-MYSTERY-CHAOS-99',
+  }
+];
+
+// --- Mystery Rewards Pool (All 7 Exact Options) ---
+const MYSTERY_REWARDS = [
+  {
+    id: 'hug',
+    headline: '🫂 VIRTUAL HUG ACQUIRED',
+    primaryVisual: '🤗',
+    line1: 'You have received one (1) pixelated hug.',
+    line2: 'Please enjoy responsibly.',
+    taxDeductible: 'No',
+    subText: 'Non-transferable emotional parcel'
+  },
+  {
+    id: 'money_million',
+    headline: '💸 ₹1,000,000',
+    primaryVisual: '💰',
+    line1: 'Congratulations!',
+    line2: 'This is virtual money.',
+    extraBox: {
+      label: 'Your imaginary bank balance is now:',
+      amount: '₹1,000,000.00'
+    },
+    taxDeductible: 'Subject to 0% imaginary income tax',
+    subText: 'Cannot be used at retail stores, ATMs, or anywhere on Earth.'
+  },
+  {
+    id: 'biscuit',
+    headline: '🍪 ONE VIRTUAL BISCUIT',
+    primaryVisual: '🍪',
+    line1: 'Don\'t eat it all at once.',
+    line2: 'Baked fresh in 32-bit floating point precision.',
+    taxDeductible: 'Zero Crumbs Reported',
+    subText: 'Store in cool, dry virtual cache'
+  },
+  {
+    id: 'small_money',
+    headline: '💰 ₹47.63',
+    primaryVisual: '🪙',
+    line1: 'Don\'t ask why.',
+    line2: 'Don\'t ask where it came from.',
+    line3: 'This is your problem now.',
+    taxDeductible: 'Untraceable petty transaction',
+    subText: 'Transferred from an anonymous slush fund'
+  },
+  {
+    id: 'told_you_so',
+    headline: '🎟️ ONE FREE \'I TOLD YOU SO\'',
+    primaryVisual: '🎟️',
+    line1: 'Redeemable at any point in the future.',
+    line2: 'No expiry date.',
+    taxDeductible: 'Guaranteed 100% smugness yield',
+    subText: 'Valid during debates, failed DIY attempts, and driving directions'
+  },
+  {
+    id: 'compliment',
+    headline: '⭐ ONE FREE COMPLIMENT',
+    primaryVisual: '✨',
+    line1: 'You look... surprisingly acceptable today.',
+    line2: 'Verified by the Committee of Modest Praise.',
+    taxDeductible: 'Subject to sudden revocation upon bad posture',
+    subText: 'Single-use ego stabilization voucher'
+  },
+  {
+    id: 'a_person',
+    headline: '🧍 A PERSON',
+    primaryVisual: '🧍‍♂️',
+    line1: 'A person has been assigned to you.',
+    line2: 'Unfortunately, we don\'t know who.',
+    taxDeductible: 'Pending HR classification',
+    subText: 'They will be standing within a 4-kilometer radius'
+  }
+];
+
+// --- Mystery Loading Steps ---
+const MYSTERY_STEPS = [
+  'Consulting the birthday committee...',
+  'Calculating your destiny...',
+  'Checking available nonsense...',
+  'Finalizing your reward...'
+];
+
+// --- Main Processing Steps ---
+const PROCESSING_STEPS = [
+  'Submitting request...',
+  'Contacting Birthday Gift Department™...',
+  'Checking inventory...',
+  'Obtaining management approval...',
+  'Approving unnecessary paperwork...',
+  'Gift approved.'
+];
+
+function App() {
+  // Navigation: 'welcome' | 'selection' | 'mystery-loading' | 'processing' | 'approved'
+  const [screen, setScreen] = useState('welcome');
+  
+  // Custom Recipient Name
+  const [recipientName, setRecipientName] = useState('Birthday Legend');
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [tempName, setTempName] = useState('Birthday Legend');
+
+  // Gift Selection & Modal States
+  const [selectedGift, setSelectedGift] = useState(null);
+  const [activeModal, setActiveModal] = useState(null); // 'normal_confirm' | 'mystery_confirm' | 'terms'
+  const [pendingGift, setPendingGift] = useState(null);
+
+  // Loading & Progression States
+  const [mysteryStepIndex, setMysteryStepIndex] = useState(0);
+  const [processingStepIndex, setProcessingStepIndex] = useState(0);
+  const [assignedMysteryReward, setAssignedMysteryReward] = useState(null);
+  const [refNumber, setRefNumber] = useState('BDAY-7489');
+
+  // Audio / Sound state
+  const [isMuted, setIsMuted] = useState(false);
+  const [copiedCode, setCopiedCode] = useState(false);
+
+  // Initialize random Reference Number
+  const generateRefNumber = () => {
+    const num = Math.floor(1000 + Math.random() * 9000);
+    return `BDAY-${num}`;
+  };
+
+  const toggleSound = () => {
+    sounds.muted = !isMuted;
+    setIsMuted(!isMuted);
+    if (isMuted) {
+      sounds.playPop();
+    }
+  };
+
+  // Launch Confetti Celebration
+  const triggerConfetti = () => {
+    if (window.confetti) {
+      try {
+        const count = 200;
+        const defaults = {
+          origin: { y: 0.7 },
+          zIndex: 1000,
+        };
+
+        function fire(particleRatio, opts) {
+          window.confetti({
+            ...defaults,
+            ...opts,
+            particleCount: Math.floor(count * particleRatio)
+          });
+        }
+
+        fire(0.25, {
+          spread: 26,
+          startVelocity: 55,
+          colors: ['#F59E0B', '#EF4444', '#10B981']
+        });
+        fire(0.2, {
+          spread: 60,
+          colors: ['#EC4899', '#8B5CF6', '#3B82F6']
+        });
+        fire(0.35, {
+          spread: 100,
+          decay: 0.91,
+          scalar: 0.8
+        });
+        fire(0.1, {
+          spread: 120,
+          startVelocity: 25,
+          decay: 0.92,
+          colors: ['#FBBF24', '#F472B6']
+        });
+        fire(0.1, {
+          spread: 120,
+          startVelocity: 45,
+        });
+      } catch (e) {
+        console.error('Confetti error:', e);
+      }
+    }
+  };
+
+  // Handle Name Editing
+  const handleSaveName = (e) => {
+    e && e.preventDefault();
+    const clean = tempName.trim() || 'Birthday Legend';
+    setRecipientName(clean);
+    setTempName(clean);
+    setIsEditingName(false);
+    sounds.playPop();
+  };
+
+  // Screen 1: Proceed to selection
+  const handleEnterPortal = () => {
+    sounds.playPop();
+    setScreen('selection');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Screen 2: Card selection click
+  const handleCardClick = (gift) => {
+    setPendingGift(gift);
+    if (gift.isMystery) {
+      sounds.playWarning();
+      setActiveModal('mystery_confirm');
+    } else {
+      sounds.playClick();
+      setActiveModal('normal_confirm');
+    }
+  };
+
+  // Confirm Normal Gift
+  const handleConfirmNormal = () => {
+    sounds.playPop();
+    setActiveModal(null);
+    setSelectedGift(pendingGift);
+    setAssignedMysteryReward(null);
+    startProcessingFlow(pendingGift, null);
+  };
+
+  // Confirm Mystery Gift
+  const handleConfirmMystery = () => {
+    sounds.playPop();
+    setActiveModal(null);
+    // Pick random reward from the 7 options
+    const randomIndex = Math.floor(Math.random() * MYSTERY_REWARDS.length);
+    const chosenReward = MYSTERY_REWARDS[randomIndex];
+    setAssignedMysteryReward(chosenReward);
+    setSelectedGift(pendingGift);
+
+    // Start dramatic mystery loading first
+    setScreen('mystery-loading');
+    setMysteryStepIndex(0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // "I WANT BEER" fallback inside mystery modal
+  const handleMysteryBeerEscape = () => {
+    sounds.playPop();
+    setActiveModal(null);
+    const beerGift = GIFTS.find(g => g.id === 'beer');
+    setSelectedGift(beerGift);
+    setAssignedMysteryReward(null);
+    startProcessingFlow(beerGift, null);
+  };
+
+  // Mystery Loading Timer Effect
+  useEffect(() => {
+    if (screen === 'mystery-loading') {
+      if (mysteryStepIndex < MYSTERY_STEPS.length - 1) {
+        const timer = setTimeout(() => {
+          sounds.playClick();
+          setMysteryStepIndex(prev => prev + 1);
+        }, 750);
+        return () => clearTimeout(timer);
+      } else {
+        // Finished mystery steps, transition into regular processing
+        const finalTimer = setTimeout(() => {
+          startProcessingFlow(pendingGift, assignedMysteryReward);
+        }, 800);
+        return () => clearTimeout(finalTimer);
+      }
+    }
+  }, [screen, mysteryStepIndex]);
+
+  // Start Processing Screen Flow
+  const startProcessingFlow = (gift, mysteryReward) => {
+    setRefNumber(generateRefNumber());
+    setScreen('processing');
+    setProcessingStepIndex(0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Processing Screen Timer Effect
+  useEffect(() => {
+    if (screen === 'processing') {
+      if (processingStepIndex < PROCESSING_STEPS.length - 1) {
+        const timer = setTimeout(() => {
+          sounds.playClick();
+          setProcessingStepIndex(prev => prev + 1);
+        }, 700);
+        return () => clearTimeout(timer);
+      } else {
+        // Complete processing, enter approved screen
+        const finalTimer = setTimeout(() => {
+          setScreen('approved');
+          sounds.playStamp();
+          setTimeout(() => {
+            sounds.playFanfare();
+            triggerConfetti();
+          }, 350);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 850);
+        return () => clearTimeout(finalTimer);
+      }
+    }
+  }, [screen, processingStepIndex]);
+
+  // Restart / Reset
+  const handleStartOver = () => {
+    sounds.playPop();
+    setSelectedGift(null);
+    setAssignedMysteryReward(null);
+    setPendingGift(null);
+    setScreen('selection');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Copy code to clipboard
+  const handleCopyCode = () => {
+    sounds.playPop();
+    const giftName = assignedMysteryReward 
+      ? assignedMysteryReward.headline 
+      : (selectedGift ? selectedGift.item : '1 x Special Birthday Gift');
+    
+    const textToCopy = `🎂 BIRTHDAY GIFT REQUISITION APPROVED\nReference: ${refNumber}\nRecipient: ${recipientName}\nClaimed Asset: ${giftName}\nDepartment: Birthday Gift Processing Department™\nStatus: 100% Official & Non-Refundable ❤️`;
+    
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        setCopiedCode(true);
+        setTimeout(() => setCopiedCode(false), 2500);
+      });
+    }
+  };
+
+  return (
+    <div className="flex flex-col min-h-screen text-slate-800">
+      
+      {/* ================= TOP CORPORATE STATUS BAR ================= */}
+      <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-stone-200/80 px-4 py-2.5 shadow-xs">
+        <div className="max-w-5xl mx-auto flex items-center justify-between gap-3 text-xs">
+          
+          {/* Status Indicator */}
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            </span>
+            <span className="font-mono text-slate-600 font-medium hidden sm:inline">
+              Birthday System Status:
+            </span>
+            <span className="font-mono font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200/60">
+              ONLINE
+            </span>
+          </div>
+
+          {/* Department badge & Actions */}
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <span className="hidden md:inline-flex items-center gap-1 font-mono text-[11px] text-slate-500 bg-stone-100 px-2 py-0.5 rounded border border-stone-200">
+              🏛️ FORM-BDAY-2026-REV4
+            </span>
+            
+            <button
+              onClick={() => setActiveModal('terms')}
+              className="text-slate-500 hover:text-slate-800 underline underline-offset-2 transition-colors cursor-pointer text-[11px]"
+              title="Official Department Bylaws"
+            >
+              Terms of Gifting
+            </button>
+
+            {/* Sound Toggle */}
+            <button
+              onClick={toggleSound}
+              className={`p-1.5 rounded-md border text-xs transition-all flex items-center gap-1 cursor-pointer ${
+                isMuted 
+                  ? 'bg-stone-100 text-stone-400 border-stone-200 hover:bg-stone-200' 
+                  : 'bg-amber-50 text-amber-800 border-amber-200 hover:bg-amber-100'
+              }`}
+              title={isMuted ? 'Unmute Sound Effects' : 'Mute Sound Effects'}
+            >
+              <span>{isMuted ? '🔇' : '🔊'}</span>
+              <span className="hidden sm:inline font-mono text-[10px]">
+                {isMuted ? 'MUTED' : 'AUDIO ON'}
+              </span>
+            </button>
+          </div>
+
+        </div>
+      </header>
+
+      {/* ================= MAIN CONTENT AREA ================= */}
+      <main className="flex-1 flex flex-col justify-center max-w-5xl mx-auto w-full px-4 sm:px-6 py-8 md:py-12">
+        
+        {/* SCREEN 1: WELCOME */}
+        {screen === 'welcome' && (
+          <div className="fade-in-up max-w-2xl mx-auto w-full text-center">
+            
+            {/* Bureaucratic Header Badge */}
+            <div className="inline-flex items-center gap-2 bg-amber-50/80 border border-amber-200/80 text-amber-800 font-mono text-xs px-3 py-1.5 rounded-full mb-6 shadow-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+              OFFICIAL ANNUAL COMMEMORATIVE PROTOCOL
+            </div>
+
+            {/* Large Heading */}
+            <h1 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl text-slate-900 tracking-tight leading-tight mb-4">
+              🎂 BIRTHDAY GIFT SELECTOR
+            </h1>
+
+            {/* Recipient Subtitle (With Inline Edit Feature) */}
+            <div className="mb-8 flex items-center justify-center gap-2">
+              {isEditingName ? (
+                <form onSubmit={handleSaveName} className="flex items-center gap-2">
+                  <input
+                    type="text"
+                    value={tempName}
+                    onChange={(e) => setTempName(e.target.value)}
+                    placeholder="Enter friend's name"
+                    autoFocus
+                    className="font-heading font-bold text-xl sm:text-2xl text-amber-600 bg-white border-2 border-amber-400 rounded-xl px-3 py-1 text-center shadow-xs outline-none focus:ring-2 focus:ring-amber-200"
+                  />
+                  <button
+                    type="submit"
+                    className="bg-amber-600 text-white px-3 py-1.5 rounded-lg text-sm font-semibold hover:bg-amber-700 transition"
+                  >
+                    Done
+                  </button>
+                </form>
+              ) : (
+                <div className="group inline-flex items-center gap-2 bg-white/70 hover:bg-white border border-stone-200/70 rounded-2xl px-4 py-2 shadow-xs transition">
+                  <span className="font-heading font-bold text-xl sm:text-2xl md:text-3xl text-amber-600">
+                    Happy Birthday, {recipientName}!!
+                  </span>
+                  <button
+                    onClick={() => {
+                      setTempName(recipientName);
+                      setIsEditingName(true);
+                    }}
+                    className="text-stone-400 hover:text-stone-700 transition p-1 cursor-pointer"
+                    title="Click to edit recipient name"
+                  >
+                    ✏️
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Main Corporate Welcome Card */}
+            <div className="glass-card rounded-3xl p-6 sm:p-9 text-slate-700 space-y-4 shadow-sm mb-9 relative overflow-hidden text-left sm:text-center">
+              <div className="absolute top-0 right-0 w-28 h-28 bg-amber-100/50 rounded-full blur-2xl pointer-events-none"></div>
+              
+              <p className="text-base sm:text-xl font-medium text-slate-800 leading-relaxed">
+                Congratulations! You have been deemed worthy of receiving a birthday present this year.
+              </p>
+              
+              <div className="py-2">
+                <span className="inline-block bg-cream-200/70 border border-amber-300/60 text-slate-900 font-semibold px-4 py-1.5 rounded-xl text-base sm:text-lg">
+                  You may choose ONE gift.
+                </span>
+              </div>
+
+              <p className="text-xs sm:text-sm text-stone-500 font-mono tracking-wide">
+                Choose wisely. There will be consequences.
+              </p>
+
+              {/* Fake Serial stamp */}
+              <div className="pt-2 flex justify-center">
+                <span className="font-mono text-[10px] text-stone-400 tracking-widest border border-stone-200 px-2 py-0.5 rounded uppercase">
+                  DUE DATE: TOMORROW • QUOTA: 1/1
+                </span>
+              </div>
+            </div>
+
+            {/* CTA Button */}
+            <button
+              onClick={handleEnterPortal}
+              className="btn-satisfying inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-heading font-bold text-lg sm:text-xl px-8 sm:px-10 py-4 rounded-2xl shadow-lg shadow-amber-600/20 cursor-pointer w-full sm:w-auto"
+            >
+              <span>ENTER GIFT PORTAL</span>
+              <span className="text-xl">→</span>
+            </button>
+
+          </div>
+        )}
+
+        {/* SCREEN 2: GIFT SELECTION */}
+        {screen === 'selection' && (
+          <div className="fade-in-up w-full">
+            
+            {/* Header */}
+            <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
+              <div className="inline-flex items-center gap-1.5 bg-stone-100 text-stone-600 text-xs font-mono px-3 py-1 rounded-full mb-3 border border-stone-200">
+                <span>REQUISITION CATALOGUE</span> • <span>5 ITEMS AVAILABLE</span>
+              </div>
+              <h2 className="font-heading font-bold text-2xl sm:text-4xl text-slate-900 tracking-tight">
+                SELECT YOUR BIRTHDAY REWARD
+              </h2>
+              <p className="text-stone-600 text-sm sm:text-base mt-2">
+                One selection only. Please consider your decision carefully.
+              </p>
+            </div>
+
+            {/* Responsive Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+              {GIFTS.map((gift) => {
+                const isMystery = gift.isMystery;
+
+                return (
+                  <div
+                    key={gift.id}
+                    className={`rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 ${
+                      isMystery 
+                        ? 'mystery-card' 
+                        : 'glass-card glass-card-hover'
+                    }`}
+                  >
+                    <div>
+                      {/* Card Header Badge & Code */}
+                      <div className="flex items-center justify-between gap-2 mb-4">
+                        <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border ${gift.badgeColor}`}>
+                          {gift.badge}
+                        </span>
+                        <span className="font-mono text-[10px] text-stone-400">
+                          {gift.auditCode}
+                        </span>
+                      </div>
+
+                      {/* Icon & Title */}
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="text-4xl filter drop-shadow-sm select-none">
+                          {gift.icon}
+                        </span>
+                        <div>
+                          <h3 className="font-heading font-bold text-lg text-slate-900 leading-snug">
+                            {gift.title}
+                          </h3>
+                          <p className="text-amber-800 font-semibold text-sm">
+                            {gift.item}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-stone-600 text-sm leading-relaxed mb-6">
+                        {gift.desc}
+                      </p>
+                    </div>
+
+                    {/* Action Button */}
+                    <div className="pt-2 border-t border-stone-100">
+                      <button
+                        onClick={() => handleCardClick(gift)}
+                        className={`btn-satisfying w-full py-3 px-4 rounded-xl font-heading font-bold text-sm tracking-wide cursor-pointer flex items-center justify-center gap-2 ${
+                          isMystery
+                            ? 'bg-rose-600 hover:bg-rose-700 text-white shadow-md shadow-rose-600/20'
+                            : 'bg-slate-900 hover:bg-slate-800 text-white shadow-md shadow-slate-900/10'
+                        }`}
+                      >
+                        <span>{gift.buttonText}</span>
+                        <span>{isMystery ? '🎲' : '✓'}</span>
+                      </button>
+                    </div>
+
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Department Warning Banner at bottom of grid */}
+            <div className="mt-8 text-center">
+              <p className="text-xs text-stone-400 font-mono">
+                ⚠️ All gift claims are irrevocable once submitted to the committee. No retroactive beer substitutions.
+              </p>
+            </div>
+
+          </div>
+        )}
+
+        {/* SCREEN: DRAMATIC MYSTERY LOADING */}
+        {screen === 'mystery-loading' && (
+          <div className="fade-in-up max-w-lg mx-auto w-full text-center py-10">
+            <div className="glass-card rounded-3xl p-8 sm:p-10 shadow-lg border-2 border-rose-200/80">
+              
+              <div className="w-20 h-20 mx-auto mb-6 relative flex items-center justify-center">
+                <span className="text-5xl animate-bounce">🎲</span>
+                <span className="absolute inset-0 rounded-full border-4 border-rose-400/30 border-t-rose-600 animate-spin"></span>
+              </div>
+
+              <span className="inline-block bg-rose-50 text-rose-700 border border-rose-200 text-xs font-mono font-bold px-3 py-1 rounded-full mb-4">
+                MYSTERY RANDOMIZATION ENGINE v1.0
+              </span>
+
+              <h3 className="font-heading font-bold text-2xl text-slate-900 mb-6">
+                Consulting the Cosmos...
+              </h3>
+
+              {/* Cycling message display */}
+              <div className="h-14 flex items-center justify-center">
+                <p className="font-mono text-base font-semibold text-rose-700 animate-pulse transition-all">
+                  {MYSTERY_STEPS[mysteryStepIndex]}
+                </p>
+              </div>
+
+              {/* Progress bar */}
+              <div className="w-full bg-stone-100 rounded-full h-3 overflow-hidden mt-6 border border-stone-200">
+                <div
+                  className="bg-gradient-to-r from-rose-500 to-amber-500 h-3 rounded-full transition-all duration-500 animate-shimmer"
+                  style={{ width: `${((mysteryStepIndex + 1) / MYSTERY_STEPS.length) * 100}%` }}
+                ></div>
+              </div>
+
+              <p className="text-[11px] text-stone-400 font-mono mt-4">
+                Step {mysteryStepIndex + 1} of {MYSTERY_STEPS.length} • Over-engineering in progress
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* SCREEN 3: CORPORATE PROCESSING */}
+        {screen === 'processing' && (
+          <div className="fade-in-up max-w-lg mx-auto w-full text-center py-10">
+            <div className="glass-card rounded-3xl p-8 sm:p-10 shadow-lg border border-stone-200">
+              
+              {/* Spinner & Department Logo */}
+              <div className="w-16 h-16 mx-auto mb-6 relative flex items-center justify-center">
+                <span className="text-3xl">🏛️</span>
+                <span className="absolute inset-0 rounded-full border-4 border-amber-300 border-t-amber-600 animate-spin"></span>
+              </div>
+
+              <div className="font-mono text-xs text-stone-500 mb-2">
+                QUEUE ITEM #{refNumber}
+              </div>
+
+              <h3 className="font-heading font-bold text-xl sm:text-2xl text-slate-900 mb-6">
+                Processing Gift Requisition
+              </h3>
+
+              {/* Animated progress step message */}
+              <div className="h-16 flex flex-col items-center justify-center px-4 bg-stone-50/80 rounded-2xl border border-stone-200/60 mb-6">
+                <p className="font-mono text-sm sm:text-base font-semibold text-slate-800">
+                  {PROCESSING_STEPS[processingStepIndex]}
+                </p>
+                <span className="text-[11px] text-stone-400 font-mono mt-1">
+                  Department Server Latency: 14ms
+                </span>
+              </div>
+
+              {/* Animated Progress Bar */}
+              <div className="w-full bg-stone-100 rounded-full h-3.5 overflow-hidden border border-stone-200 shadow-inner">
+                <div
+                  className="bg-gradient-to-r from-amber-500 via-amber-600 to-emerald-600 h-3.5 rounded-full transition-all duration-500 animate-shimmer"
+                  style={{ width: `${((processingStepIndex + 1) / PROCESSING_STEPS.length) * 100}%` }}
+                ></div>
+              </div>
+
+              {/* Audit trail details */}
+              <div className="mt-6 pt-4 border-t border-stone-100 text-left font-mono text-[10px] text-stone-400 space-y-1">
+                <div>[SYSTEM] Payload validated by Birthday Committee</div>
+                <div>[BUREAUCRACY] Form B-12 signed with digital blue ink</div>
+                <div>[STATUS] {processingStepIndex === PROCESSING_STEPS.length - 1 ? 'ALL APPROVALS SECURED' : 'PENDING STAMP DEPOSIT'}</div>
+              </div>
+
+            </div>
+          </div>
+        )}
+
+        {/* SCREEN 4: GIFT APPROVED */}
+        {screen === 'approved' && (
+          <div className="fade-in-up max-w-2xl mx-auto w-full text-center">
+            
+            {/* Celebration Badge */}
+            <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-300/80 text-emerald-800 font-mono text-xs px-3.5 py-1.5 rounded-full mb-4 shadow-xs">
+              <span className="text-base">🎉</span>
+              <span>OFFICIAL DISPATCH CONFIRMATION</span>
+            </div>
+
+            {/* Large Heading */}
+            <h1 className="font-heading font-extrabold text-3xl sm:text-5xl text-slate-900 tracking-tight mb-2">
+              🎉 GIFT SUCCESSFULLY CLAIMED!
+            </h1>
+            
+            <p className="text-stone-600 text-base sm:text-lg mb-8">
+              Your selection has been recorded.
+            </p>
+
+            {/* Large Beautiful Card (Official Certificate) */}
+            <div className="glass-card official-watermark rounded-3xl p-6 sm:p-9 shadow-xl border-2 border-stone-200/80 relative text-left mb-8">
+              
+              {/* Card Top Strip: Rubber Stamp & Reference Number */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-stone-200/80 pb-5 mb-6">
+                <div>
+                  <div className="font-mono text-xs text-stone-400 tracking-wide uppercase">
+                    Fulfillment Reference Number
+                  </div>
+                  <div className="font-mono font-bold text-xl sm:text-2xl text-slate-900 mt-0.5">
+                    {refNumber}
+                  </div>
+                </div>
+
+                {/* APPROVED Rubber Stamp */}
+                <div className="self-end sm:self-center">
+                  <div className="stamp-approved">
+                    Status: APPROVED ✓
+                  </div>
+                </div>
+              </div>
+
+              {/* Gift Content Section */}
+              <div className="relative z-10 py-4">
+                {assignedMysteryReward ? (
+                  /* Mystery Outcome Display */
+                  <div className="space-y-4">
+                    <div className="inline-block bg-rose-50 text-rose-700 border border-rose-200 text-xs font-mono font-bold px-3 py-1 rounded-full">
+                      MYSTERY DESTINY UNLOCKED
+                    </div>
+                    
+                    <div className="text-6xl sm:text-7xl py-2">
+                      {assignedMysteryReward.primaryVisual}
+                    </div>
+
+                    <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900">
+                      {assignedMysteryReward.headline}
+                    </h2>
+
+                    <div className="bg-amber-50/60 border border-amber-200/70 rounded-2xl p-4 sm:p-5 space-y-2">
+                      <p className="text-base sm:text-lg font-semibold text-slate-800">
+                        {assignedMysteryReward.line1}
+                      </p>
+                      {assignedMysteryReward.line2 && (
+                        <p className="text-sm sm:text-base text-stone-600">
+                          {assignedMysteryReward.line2}
+                        </p>
+                      )}
+                      {assignedMysteryReward.line3 && (
+                        <p className="text-sm font-mono text-stone-700 pt-1 font-bold">
+                          {assignedMysteryReward.line3}
+                        </p>
+                      )}
+
+                      {/* Special extra box for imaginary money */}
+                      {assignedMysteryReward.extraBox && (
+                        <div className="mt-3 p-3 bg-white rounded-xl border border-amber-200 text-center">
+                          <p className="text-xs text-stone-500 font-mono">
+                            {assignedMysteryReward.extraBox.label}
+                          </p>
+                          <p className="text-2xl font-mono font-extrabold text-emerald-600 mt-1">
+                            {assignedMysteryReward.extraBox.amount}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+
+                    <p className="text-xs font-mono text-stone-400">
+                      Disclaimer: {assignedMysteryReward.subText}
+                    </p>
+                  </div>
+                ) : (
+                  /* Standard Gift Display */
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-4">
+                      <span className="text-6xl filter drop-shadow-sm select-none">
+                        {selectedGift ? selectedGift.icon : '🎁'}
+                      </span>
+                      <div>
+                        <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border ${selectedGift ? selectedGift.badgeColor : ''}`}>
+                          {selectedGift ? selectedGift.badge : 'CONFIRMED'}
+                        </span>
+                        <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 mt-1">
+                          {selectedGift ? selectedGift.title : 'Official Gift'}
+                        </h2>
+                        <p className="text-amber-800 font-semibold text-base sm:text-lg">
+                          {selectedGift ? selectedGift.item : ''}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="bg-stone-50 rounded-2xl p-4 border border-stone-200/70">
+                      <p className="text-stone-700 text-sm sm:text-base leading-relaxed">
+                        {selectedGift ? selectedGift.desc : ''}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Barcode Strip & Recipient Record */}
+              <div className="mt-6 pt-5 border-t border-stone-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="font-mono text-xs text-stone-500">
+                  <div>RECIPIENT: <strong className="text-slate-800">{recipientName}</strong></div>
+                  <div>AUTHORIZED BY: Your Favorite Friend</div>
+                  <div>DISPATCH METHOD: Tomorrow In-Person Delivery</div>
+                </div>
+
+                {/* Simulated Barcode */}
+                <div className="barcode-strip" title="Digital Barcode BDAY-9001">
+                  {[2, 4, 1, 3, 2, 5, 1, 2, 4, 2, 1, 3, 4, 2, 1, 3, 2, 4, 1, 3].map((w, i) => (
+                    <div
+                      key={i}
+                      className="barcode-bar"
+                      style={{ width: `${w}px` }}
+                    ></div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
+            {/* Closing Sentiment */}
+            <div className="space-y-1 mb-8">
+              <p className="font-heading font-bold text-xl sm:text-2xl text-slate-800">
+                Thank you for being born.
+              </p>
+              <p className="text-3xl text-rose-500 animate-pulse">
+                ❤️
+              </p>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <button
+                onClick={handleStartOver}
+                className="btn-satisfying w-full sm:w-auto px-7 py-3.5 rounded-xl font-heading font-bold text-slate-700 bg-white hover:bg-stone-100 border border-stone-300 shadow-xs cursor-pointer"
+              >
+                ← START OVER
+              </button>
+              
+              <button
+                onClick={handleCopyCode}
+                className="btn-satisfying w-full sm:w-auto px-7 py-3.5 rounded-xl font-heading font-bold text-white bg-slate-900 hover:bg-slate-800 shadow-md shadow-slate-900/10 cursor-pointer flex items-center justify-center gap-2"
+              >
+                <span>{copiedCode ? '✓ COPIED TO CLIPBOARD' : '📋 COPY DISPATCH RECORD'}</span>
+              </button>
+            </div>
+
+          </div>
+        )}
+
+      </main>
+
+      {/* ================= MODAL: NORMAL CONFIRMATION ================= */}
+      {activeModal === 'normal_confirm' && pendingGift && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
+          <div className="fade-in-up bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-stone-200 text-center">
+            
+            <div className="text-4xl mb-3">
+              {pendingGift.icon}
+            </div>
+
+            <h3 className="font-heading font-extrabold text-2xl text-slate-900 mb-2">
+              Are you sure?
+            </h3>
+
+            <p className="text-stone-600 text-sm sm:text-base mb-4">
+              You selected <strong className="text-slate-900">{pendingGift.item}</strong>.
+            </p>
+
+            <div className="bg-amber-50/70 border border-amber-200/80 rounded-2xl p-4 text-xs sm:text-sm text-stone-700 font-mono mb-6">
+              Once submitted, your choice enters the Birthday Gift Processing Department™.
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={() => {
+                  sounds.playClick();
+                  setActiveModal(null);
+                }}
+                className="btn-satisfying flex-1 py-3 px-4 rounded-xl font-heading font-semibold text-slate-600 bg-stone-100 hover:bg-stone-200 cursor-pointer text-sm"
+              >
+                WAIT, LET ME THINK
+              </button>
+
+              <button
+                onClick={handleConfirmNormal}
+                className="btn-satisfying flex-1 py-3 px-4 rounded-xl font-heading font-bold text-white bg-slate-900 hover:bg-slate-800 shadow-md shadow-slate-900/10 cursor-pointer text-sm"
+              >
+                YES, I'M SURE
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
+
+      {/* ================= MODAL: MYSTERY WARNING ================= */}
+      {activeModal === 'mystery_confirm' && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs">
+          <div className="fade-in-up bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border-2 border-rose-300 text-center relative overflow-hidden">
+            
+            {/* Danger warning stripes */}
+            <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-amber-500 via-rose-500 to-amber-500"></div>
+
+            <div className="w-14 h-14 bg-rose-100 text-rose-700 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
+              ⚠️
+            </div>
+
+            <h3 className="font-heading font-extrabold text-2xl text-rose-600 tracking-wide mb-2">
+              WARNING
+            </h3>
+
+            <p className="text-slate-800 font-medium text-base mb-2">
+              You are about to surrender control of your birthday gift.
+            </p>
+
+            <p className="text-stone-500 text-sm mb-6">
+              Your reward will be randomly determined.
+            </p>
+
+            <div className="flex flex-col gap-2.5">
+              <button
+                onClick={handleConfirmMystery}
+                className="btn-satisfying w-full py-3.5 px-4 rounded-xl font-heading font-bold text-white bg-rose-600 hover:bg-rose-700 shadow-md shadow-rose-600/20 cursor-pointer text-sm"
+              >
+                YES, GIVE ME THE MYSTERY
+              </button>
+
+              <button
+                onClick={handleMysteryBeerEscape}
+                className="btn-satisfying w-full py-3 px-4 rounded-xl font-heading font-bold text-amber-800 bg-amber-100 hover:bg-amber-200 border border-amber-300 cursor-pointer text-sm flex items-center justify-center gap-1.5"
+              >
+                <span>🍺</span>
+                <span>I WANT BEER</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
+
+      {/* ================= MODAL: OFFICIAL TERMS & CONDITIONS (EASTER EGG) ================= */}
+      {activeModal === 'terms' && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
+          <div className="fade-in-up bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-stone-200 text-left max-h-[85vh] flex flex-col">
+            
+            <div className="flex items-center justify-between border-b border-stone-200 pb-3 mb-4">
+              <div>
+                <h3 className="font-heading font-bold text-lg text-slate-900">
+                  Department Bylaws & Regulations
+                </h3>
+                <span className="font-mono text-[11px] text-stone-400">
+                  Directive BDAY-304.2 subsection (e)
+                </span>
+              </div>
+              <button
+                onClick={() => setActiveModal(null)}
+                className="text-stone-400 hover:text-stone-700 font-bold p-1 cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="overflow-y-auto pr-2 space-y-3 font-sans text-xs text-stone-600 flex-1">
+              <p>
+                <strong>1. Scope of Agreement:</strong> By accessing this portal, the recipient acknowledges that their birthday is tomorrow and that aging has occurred strictly in compliance with biological standards.
+              </p>
+              <p>
+                <strong>2. The Druk Clause:</strong> Beer provided under Package 1 must be consumed responsibly. The Department is not liable for subsequent late-night philosophical debates or embarrassing text messages.
+              </p>
+              <p>
+                <strong>3. Gains Guarantee:</strong> Plant protein will not automatically cause muscle synthesis unless actual physical exertion occurs. The Department disclaims all responsibility for unused shaker bottles left in sink basins.
+              </p>
+              <p>
+                <strong>4. Mystery Risk Acceptance:</strong> Selecting the Mystery Gift waives all rights to complain about receiving virtual money or an unidentified assigned human.
+              </p>
+              <p>
+                <strong>5. Non-Transferability:</strong> Birthday love expressed herein is permanent, non-negotiable, and strictly valid for life.
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-stone-200 text-right mt-3">
+              <button
+                onClick={() => setActiveModal(null)}
+                className="btn-satisfying px-5 py-2 rounded-xl bg-slate-900 text-white font-heading font-semibold text-xs cursor-pointer"
+              >
+                I ACCEPT THE BUREAUCRACY
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
+
+      {/* ================= FOOTER ================= */}
+      <footer className="mt-auto border-t border-stone-200/80 bg-white/50 py-6 px-4 text-center">
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone-500 font-mono">
+          <p>
+            © 2026 Birthday Gift Processing Department™
+          </p>
+          <p className="text-[11px] text-stone-400">
+            Form BDAY-882-B • Department of Questionable Decisions
+          </p>
+        </div>
+      </footer>
+
+    </div>
+  );
+}
+
+// Render React App
+const container = document.getElementById('root');
+const root = ReactDOM.createRoot(container);
+root.render(<App />);
+
+  </script>
+</body>
+</html>
