@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -371,9 +371,9 @@ function App() {
   const [screen, setScreen] = useState('welcome');
   
   // Custom Recipient Name
-  const [recipientName, setRecipientName] = useState('Birthday Legend');
+  const [recipientName, setRecipientName] = useState('Shivam Sunandram');
   const [isEditingName, setIsEditingName] = useState(false);
-  const [tempName, setTempName] = useState('Birthday Legend');
+  const [tempName, setTempName] = useState('Shivam Sunandram');
 
   // Gift Selection & Modal States
   const [selectedGift, setSelectedGift] = useState(null);
@@ -455,7 +455,7 @@ function App() {
   // Handle Name Editing
   const handleSaveName = (e) => {
     e && e.preventDefault();
-    const clean = tempName.trim() || 'Birthday Legend';
+    const clean = tempName.trim() || 'Shivam Sunandram';
     setRecipientName(clean);
     setTempName(clean);
     setIsEditingName(false);
